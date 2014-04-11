@@ -1,0 +1,25 @@
+<?php
+	if(isset($_POST['submit'])) {
+		$data = "";
+		for ($i = 1;$i<=3 ; $i++) {
+			$image = "image" . $i;
+			echo $image;
+			$question = "q" . $i;
+			$data .= $_POST[$image] . '-' . $_POST[$question] . '-' ."\n";
+		    
+		}
+	    //$data = $_POST['q1'] . '-' . $_POST['q2'] . '-' .$_POST['q3'] . '-' ."\n";
+	    $ret = file_put_contents('/tmp/mydata.txt', $data, FILE_APPEND | LOCK_EX);
+	    if($ret === false) {
+		die('There was an error writing this file');
+	    }
+	    else {
+		echo "$ret bytes written to file";
+	    }
+	}
+	else {
+	   die('no post data to process');
+	}
+
+
+?>

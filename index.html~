@@ -1,0 +1,54 @@
+<html>
+
+<!--
+	<img src="images/header/rotate.php" alt="Header" width="400" height="100" /> 
+-->
+
+
+<!--
+<script type="text/javascript">
+nRandom = Math.ceil(Math.random() * 9);
+document.write ('<img src="image' + nRandom + '.jpg">');
+</script>  -->
+<form action="myprocessingscript.php" method="POST">
+	<script type="text/javascript">
+		var arr = []
+		while(arr.length < 4){
+		  var randomnumber=Math.ceil(Math.random()*9)
+		  var found=false;
+		  for(var i=0;i<arr.length;i++){
+		    if(arr[i]==randomnumber){found=true;break}
+		  }
+		  if(!found)arr[arr.length]=randomnumber;
+		}
+
+	/*document.write ('<img src="image' + arr[0] + '.jpg"> <img src="image' + arr[1] + '.jpg"> <img src="image' + arr[2] + '.jpg">');
+		document.write ('<br><input type="radio" name="q1" value="Ishan">Ishan<br>'); */
+ 		for(var i=1;i<=3;i++){
+		    //button names are q1,q2,....
+		    var str="image" + arr[i] + ".jpg";
+		    document.write (str);
+		    document.write ('Q'+i + '<br><img src="image' + arr[i] + '.jpg"><br>');
+		    document.write ('<input type="hidden" name="image'+'i" value="image' + arr[i] + '.jpg">');
+		    document.write ('<input type="radio" name="q'+i+'" value="True">True<br>');
+		    document.write ('<input type="radio" name="q'+i+'" value="False">False<br><br>');
+			
+		  }
+	</script>
+		
+	
+	   <!-- <input name="option1" type="checkbox" value="Dog"/> Dog<br>
+	    <input name="option2" type="checkbox" value="Car"/> Car<br>
+	    <input name="option3" type="checkbox" value="Cat"/> Cat<br> -->
+		<!--<br>document.write ('<img src="image' + arr[0]'); <br> -->
+
+		<!--<input type="radio" name="q1" value="True"> True<br> 
+		<input type="radio" name="q1" value="False"> False<br> -->
+
+	    <input type="submit" name="submit" value="Save Data"> <br>
+	    <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+	</form>
+
+
+
+</html>
