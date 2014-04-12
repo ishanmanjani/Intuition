@@ -22,7 +22,7 @@
 		die('There was an error writing this file');
 	    }
 	    else {
-		echo "$ret bytes written to file";
+		// echo "$ret bytes written to file";
 	    }
 	}
 	else {
@@ -33,6 +33,25 @@
 ?>
 
 
+
+
+<head>
+
+	<style>
+		table,th,td
+		{
+			border:0px solid black;
+			border-collapse:collapse;
+		}
+	</style>
+
+</head>
+
+<body>
+
+<center>
+	<h1><br></h1>
+	<table style="width:1000px">
 
 <form action="timer.php" method="POST">
 	
@@ -64,12 +83,19 @@
  		
 		  
 		  for(var i=1;i<=10;i++){
-		    
+
+		  	if(i==1 || i== 5 || i==9){
+		  		document.write('<tr>');
+		  	}
+
+		  	document.write('<td>');	
+
+
 		    var str="/data/original/"+ class_random[i] + "/"+ class_random[i] + "_o_" + arr[i] + ".jpg";
 
 		    // document.write (str);
 		    
-		    document.write ('<br>');
+		    // document.write ('<br>');
 		    /*sawal is the question asked variable question is used*/
 		    /*ans is true or false, variable used is answer (answer1,answer2...)*/
 		    /*text box is if ans given is false, variable used is ans_text*/
@@ -85,11 +111,19 @@
 		    document.write ('<input type="text" name="ans_text'+i+'"><br><br>');
 		    
 			
+
+			document.write('</td>');
+			 /*closing row*/
+			if(i==4 || i==8 || i==10){
+		  		document.write('</tr>');
+		  	}
 		  }
 
 		  document.write ('<input type="hidden" name="finaltime_var" id="final_var" value=1111>');
 		 
 	</script>
+
+	</table>
 		 
 	
 	   
@@ -114,6 +148,12 @@
 		
 
 </form>
+
+
+</center>
+
+
+</body>
 
 	
 

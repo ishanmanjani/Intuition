@@ -1,6 +1,6 @@
 <html>
 
-<!-- achiyaan -->
+
 <!-- index comes here, index matlab non blur protocol 1 -->
 <!-- from myprocessing.php -->
 <?php
@@ -24,7 +24,7 @@
 		die('There was an error writing this file');
 	    }
 	    else {
-		echo "$ret bytes written to file";
+		// echo "$ret bytes written to file";
 	    }
 	}
 	else {
@@ -36,16 +36,24 @@
 
 
 
-<!--
-	<img src="images/header/rotate.php" alt="Header" width="400" height="100" /> 
--->
+<head>
 
-<!-- <img src="/data/original/1/1_o_82.jpg"> -->
-<!--
-<script type="text/javascript">
-nRandom = Math.ceil(Math.random() * 9);
-document.write ('<img src="image' + nRandom + '.jpg">');
-</script>  -->
+	<style>
+		table,th,td
+		{
+			border:0px solid black;
+			border-collapse:collapse;
+		}
+	</style>
+
+</head>
+
+<body>
+
+<center>
+	<h1><br></h1>
+	<table style="width:1000px">
+
 <form action="missing.php" method="POST">
 	<!-- <input type="hidden" name="FinalTime" id="final" value=1014> -->
 	<script type="text/javascript">
@@ -104,11 +112,19 @@ document.write ('<img src="image' + nRandom + '.jpg">');
 		  
 		  /*for(var i=1;i<=20;i++){*/
 		  for(var i=1;i<=10;i++){
+
+		  	/*starting row of table*/
+		  	if(i==1 || i== 5 || i==9){
+		  		document.write('<tr>');
+		  	}
+
+		  	document.write('<td>');
+
 		    //button names are ans1,ans2,....
 		    //var str="/data/original/" + randomclass[i] + "/" randomclass[i] + "_o_"+ arr[i] + ".jpg";
 		    var str="/data/blur/"+ class_random[i] + "/"+ class_random[i] + "_b_" + arr[i] + ".jpg";
 		    // document.write (str);
-		    document.write ('<br>');
+		    // document.write ('<br>');
 		    /*sawal is the question asked variable question is used*/
 		    /*ans is true or false, variable used is answer (answer1,answer2...)*/
 		    /*text box is if ans given is false, variable used is ans_text*/
@@ -118,14 +134,23 @@ document.write ('<img src="image' + nRandom + '.jpg">');
 		    document.write ('<input type="hidden" name="image'+i+'" value="'+str_arr[str_arr.length-1]+'">');
 		    document.write ('<input type="radio" name="answer'+i+'" value="True">True<br>');
 		    document.write ('<input type="radio" name="answer'+i+'" value="False">False<br>');
-		    document.write ('<input type="text" name="ans_text'+i+'"><br><br>');
+		    document.write ('<input type="text" name="ans_text'+i+'"><br><br><br><br>');
 		    //FinalTime();
+
+		    
+		    document.write('</td>');
+		    /*closing row*/
+			if(i==4 || i==8 || i==10){
+		  		document.write('</tr>');
+		  	}
 			
 		  }
 
 		  document.write ('<input type="hidden" name="finaltime_var" id="final_var" value=1111>');
 		 
 	</script>
+
+	</table>
 		 
 	
 	   <!-- <input name="option1" type="checkbox" value="Dog"/> Dog<br>
@@ -158,7 +183,10 @@ document.write ('<img src="image' + nRandom + '.jpg">');
 </form>
 
 	
+</center>
 
+
+</body>
 
 
 </html>

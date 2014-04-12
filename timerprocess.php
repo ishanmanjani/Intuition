@@ -18,7 +18,7 @@
 
 	    $data .= "\n";
 	    // /*i have to set this varibale given on how many images are displayed*/
-	    $n=10;
+	    $n=100;
 	    for ($i=1; $i<=$n ; $i++) { 
 	    	$id="check" . $i;
 	    	// echo "$id";
@@ -29,10 +29,10 @@
 	    	if(isset($_POST[$id])){
 	    		$image = "image" . $i;
 	    		// echo "$image";
-	    		$data .= "-" . $_POST[$image];
+	    		$data .=$_POST[$image] . "-" ;
 
 	    		$timetaken = "timeForImage" . $i;
-	    		$data .= "-" . $_POST[$timetaken];
+	    		$data .=  $_POST[$timetaken] . "," ;
 	    	}
 	    	echo "\n";
 	    }

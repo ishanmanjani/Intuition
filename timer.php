@@ -24,7 +24,7 @@
 		die('There was an error writing this file');
 	    }
 	    else {
-		echo "$ret bytes written to file";
+		// echo "$ret bytes written to file";
 	    }
 	}
 	else {
@@ -56,7 +56,7 @@
 		die('There was an error writing this file');
 	    }
 	    else {
-		echo "$ret bytes written to file";
+		// echo "$ret bytes wordwrap(str)ritten to file";
 	    }
 	}
 
@@ -94,7 +94,7 @@
 		
 	</head>
 
-	<body><center><h1>Select 5 Cat images<br><br>
+	<body><center><h1>Select 15 Cat images<br><br>
 	</h1>
 
 		<!-- <img src="image3.jpg" id="I1" onClick ="TimerSubmit(document.getElementById('I1').src)" /> -->
@@ -108,7 +108,7 @@
 				var class_random = []
 				var question = []
 				
-				while(arr.length < 11){
+				while(arr.length < 101){
 				  var randomnumber=Math.ceil(Math.random()*937)
 				  //if(randomnumber==0) document.write('yes it is 1');
 				  var rr=Math.ceil(Math.random()*10)
@@ -119,10 +119,12 @@
 				  //question[question.length]=q;
 				}
 
-				for(var i=1;i<=10;i++){
+				for(var i=1;i<=100;i++){
 				    //button names are ans1,ans2,....
 				    //var str="/data/original/" + randomclass[i] + "/" randomclass[i] + "_o_"+ arr[i] + ".jpg";
-				    var str="/data/blur/"+ class_random[i] + "/"+ class_random[i] + "_b_" + arr[i] + ".jpg";
+				    
+				    // var str="/data/blur/"+ class_random[i] + "/"+ class_random[i] + "_b_" + arr[i] + ".jpg";
+				    var str="/data/original/"+ class_random[i] + "/"+ class_random[i] + "_o_" + arr[i] + ".jpg";
 				   
 				    // document.write (str);
 				   
@@ -152,7 +154,7 @@
 				    // document.write ('<input type="radio" name="answer'+i+'" value="False">False<br>');
 				    // document.write ('<input type="text" name="ans_text'+i+'"><br><br>');
 
-				    if(i%4==0){
+				    if(i%8==0){
 				    	document.write('<br><br><br>');	
 				    } 
 
@@ -202,7 +204,7 @@
 
 				/*done by ishan 11.4.14*/
 				var ttt="tI" + number;
-				alert(ttt);
+				// alert(ttt);
 				var endTime = new Date();
 	    		
 	    		var startTime=getStart();
