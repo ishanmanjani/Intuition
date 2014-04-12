@@ -1,10 +1,13 @@
-
 <html>
 
-<!-- timer.php comes here -->	
 
+
+<!--  withoutime ki php-->
+<!-- without time comes here -->
 <?php
-	if(isset($_POST['next']) || isset($_POST['sub'])) {
+	
+	// if(isset($_POST['next']) || isset($_POST['sub'])) {
+	if(isset($_POST['next'])) {
 		$data = "\n";
 		$data .= $_POST['Mainclass_displayed'];
 		$data .= ",";
@@ -40,7 +43,7 @@
 	    	}
 	    	echo "\n";
 	    }
-	    $data .= ";	\n";
+	    $data .= ";\n";
 
 
 	    /*linking*/
@@ -62,10 +65,31 @@
 	else {
 	   die('no post data to process');
 	}
+
+
 ?>
 
 
+<center>
+<head>
 
-<h1><center>Thankyou</center>
+	<!-- <h2> Form 3</h2> --> <p>
+
+		In the next page you will see 100 images.<br>
+		You have to select 15 images as instructed as soon as possible.<br>
+		There is a time limit of 20 seconds for doing this job.<br>
+		</p>
+
+
+	<br>
+
+</head>
+
+
+<form action="timer.php" method="POST">
+	<input type="submit" name="submit" value="Continue" > <br>
+
+</form>
+</center>
 
 </html>

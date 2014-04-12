@@ -1,20 +1,53 @@
 <html>
 
-<!-- timedescription comes here -->
-<!-- no php since it doesnot have php -->
+<!-- missing comes here -->
+<!-- from missing.php -->
+<?php
+	if(isset($_POST['submit'])) {
+		$data = "";
+		for ($i = 1;$i<=10 ; $i++) {
+			// $question = "sawal" . $i;
+			$image = "image" . $i;
+			//echo $image;	
+			// $answer = "answer" . $i;
+			$ans_text = "ans_text" . $i;
+			$data .= $_POST[$image] . '-' . $_POST[$ans_text] ;
+		    $data .=",";
+		}
+	    //$data = $_POST['q1'] . '-' . $_POST['q2'] . '-' .$_POST['q3'] . '-' ."\n";
+	    $data .= $_POST['finaltime_var'];
+	    $data .= ";\n\n";
 
-<!-- withoutmissing.php comes here -->
-<!-- from withoutmissingprocess.php  -->
-<!-- 
-commented this php when added timerdescripton in between withoutmissing and timer, thanks !
 
 
 
- -->
+	    /*linking*/
+			session_start();
+			$new_count=$_SESSION['filetowrite'];
+			$file_name="file" . $new_count . ".txt";
+			$path_file = "/var/www/research/groups/iab/exptML/results/" . $file_name;
 
-<!-- 
 
- -->	
+		$ret = file_put_contents($path_file, $data, FILE_APPEND | LOCK_EX);
+	    // $ret = file_put_contents('/tmp/missingdata.txt', $data, FILE_APPEND | LOCK_EX);
+	    if($ret === false) {
+		die('There was an error writing this file');
+	    }
+	    else {
+		// echo "$ret bytes written to file";
+	    }
+	}
+	else {
+	   die('no post data to process');
+	}
+
+
+?>
+
+
+
+
+
 
 
 	<head>
@@ -28,10 +61,10 @@ commented this php when added timerdescripton in between withoutmissing and time
 		    		//document.test.next.=true;
 		    		document.getElementById('sub1').checked=true;
 		    		document.test.submit();		 
-				}, 20000);
+				}, 10000);
 			
 			}
-			loading();
+			//loading();
 
 		/*start time of script*/
 		var openTime = new Date();
@@ -44,12 +77,12 @@ commented this php when added timerdescripton in between withoutmissing and time
 		
 	</head>
 
-	<body><center><!-- <h1>Select 15 Cat images<br><br>
-	</h1> -->
+	<body><center><!-- <h1>Select 15 Cat images<br><br> -->
+	<!-- </h1> -->
 
 		<!-- <img src="image3.jpg" id="I1" onClick ="TimerSubmit(document.getElementById('I1').src)" /> -->
 		<!-- <img src="image3.jpg" id="I1" onClick ="TimerSubmit()" /> -->
-		<form name="test" method="post" action="timerprocess.php">
+		<form name="test" method="post" action="timerdescription.php">
 			<input type="checkbox" name="sub" id="sub1" style="display:none">
 
 			<script type="text/javascript">
@@ -69,14 +102,10 @@ commented this php when added timerdescripton in between withoutmissing and time
 				  //question[question.length]=q;
 				}
 
-
-
 				var Mainclassdisplayed = Math.ceil(Math.random()*10);
 				var mapping=new Array("automobile", "bird", "cat", "deer", "dog" ,"frog", "horse", "ship" , "truck", "airplane");
-				document.write('<h1>Form 6: Select 15 '+mapping[Mainclassdisplayed-1]+ ' images<br><br></h1>')
+				document.write('<h1>Form 5: Select 15 '+mapping[Mainclassdisplayed-1]+ ' images<br><br></h1>')
 				document.write ('<input type="hidden" name="Mainclass_displayed" id="mainclass" value="'+Mainclassdisplayed+'"  >');
-
-
 
 				for(var i=1;i<=100;i++){
 				    //button names are ans1,ans2,....

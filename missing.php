@@ -1,23 +1,32 @@
 <html>
 
-<!-- blur comes here -->
-<!-- from blurprocess.php -->
+<!-- withoutmissing comes here -->
 <?php
 	if(isset($_POST['submit'])) {
 		$data = "";
 		for ($i = 1;$i<=10 ; $i++) {
-			$question = "sawal" . $i;
+			// $question = "sawal" . $i;
 			$image = "image" . $i;
 			//echo $image;	
-			$answer = "answer" . $i;
+			// $answer = "answer" . $i;
 			$ans_text = "ans_text" . $i;
-			$data .= $_POST[$question] . '-' . $_POST[$image] . '-' . $_POST[$answer] . '-' . $_POST[$ans_text] . '-';
-		    $data .= ",";
+			$data .= $_POST[$image] . '-' . $_POST[$ans_text] ;
+		    $data .=",";
 		}
 	    //$data = $_POST['q1'] . '-' . $_POST['q2'] . '-' .$_POST['q3'] . '-' ."\n";
 	    $data .= $_POST['finaltime_var'];
-	    $data .= "\n\n";
-	    $ret = file_put_contents('/tmp/blurdata.txt', $data, FILE_APPEND | LOCK_EX);
+	    $data .= ";\n\n";
+
+
+	    /*linking*/
+			session_start();
+			$new_count=$_SESSION['filetowrite'];
+			$file_name="file" . $new_count . ".txt";
+			$path_file = "/var/www/research/groups/iab/exptML/results/" . $file_name;
+
+
+		$ret = file_put_contents($path_file, $data, FILE_APPEND | LOCK_EX);
+		// $ret = file_put_contents('/tmp/withoutlomissingdata.txt', $data, FILE_APPEND | LOCK_EX);
 	    if($ret === false) {
 		die('There was an error writing this file');
 	    }
@@ -45,6 +54,14 @@
 		}
 	</style>
 
+
+	<center><h2> Form 4</h2> <p>
+
+	For each of the image shown, write the corresponding label.<br>
+	<br>
+	The ten different possible labels are: <b>Automobile, Bird, Cat, Deer, Dog, Frog, Horse, Ship, Truck, Airplane </b>
+	</p></center>
+
 </head>
 
 <body>
@@ -54,7 +71,7 @@
 	<table style="width:1000px">
 
 
-<form action="withoutmissing.php" method="POST">
+<form action="withouttime.php" method="POST">
 	
 	<script type="text/javascript">
 		//arr contains random numbers from 1-937, to select randomly an image from a class

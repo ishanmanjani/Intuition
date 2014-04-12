@@ -13,13 +13,25 @@
 			//echo $image;	
 			$answer = "answer" . $i;
 			$ans_text = "ans_text" . $i;
+
 			$data .= $_POST[$question] . '-' . $_POST[$image] . '-' . $_POST[$answer] . '-' . $_POST[$ans_text] . '-';
+			$data .= ",";
 		    
 		}
 	    //$data = $_POST['q1'] . '-' . $_POST['q2'] . '-' .$_POST['q3'] . '-' ."\n";
 	    $data .= $_POST['finaltime_var'];
-	    $data .= "\n\n";
-	    $ret = file_put_contents('/tmp/normal.txt', $data, FILE_APPEND | LOCK_EX);
+	    $data .= ";\n\n";
+
+	    /*linking*/
+			session_start();
+			$new_count=$_SESSION['filetowrite'];
+			$file_name="file" . $new_count . ".txt";
+			$path_file = "/var/www/research/groups/iab/exptML/results/" . $file_name;
+
+
+		$ret = file_put_contents($path_file, $data, FILE_APPEND | LOCK_EX);
+	    // $ret = file_put_contents('/tmp/normal.txt', $data, FILE_APPEND | LOCK_EX);
+
 	    if($ret === false) {
 		die('There was an error writing this file');
 	    }
@@ -46,6 +58,14 @@
 		}
 	</style>
 
+	<center><h2> Form 2</h2> <p>
+
+	For each of the following questions mark True if the given label corresponds to the image.<br>
+	If you mark False, write the correct label for the image in the space provided.<br>
+	<br>
+	The ten different images used here are : <b>Automobile, Bird, Cat, Deer, Dog, Frog, Horse, Ship, Truck, Airplane </b>
+	</p></center>
+
 </head>
 
 <body>
@@ -54,7 +74,7 @@
 	<h1><br></h1>
 	<table style="width:1000px">
 
-<form action="missing.php" method="POST">
+<form action="withoutmissing.php" method="POST">
 	<!-- <input type="hidden" name="FinalTime" id="final" value=1014> -->
 	<script type="text/javascript">
 		//arr contains random numbers from 1-937, to select randomly an image from a class
